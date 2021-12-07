@@ -1,7 +1,7 @@
 const { RESTDataSource } = require("apollo-datasource-rest");
 const serverConfig = require("../server");
 
-class AccountAPI extends RESTDataSource {
+class AfiliadoAPI extends RESTDataSource {
   constructor() {
     super();
 
@@ -55,4 +55,4 @@ class AccountAPI extends RESTDataSource {
   }
 }
 
-module.exports = AccountAPI;
+module.exports = AfiliadoAPI;

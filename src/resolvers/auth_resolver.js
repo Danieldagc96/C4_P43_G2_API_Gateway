@@ -1,39 +1,43 @@
 const usersResolver = {
   Query: {
-    userDetailById: (_, { userId }, { dataSources, userIdToken }) => {
-      if (userId == userIdToken) return dataSources.authAPI.getUser(userId);
-      else return null;
+    userDetailById: async (_, { userId }, { dataSources, autenticado }) => {
+      if (autenticado == true) {
+        return await dataSources.acc
+      } else {
+        return null;
+      }
     },
   },
 
   Mutation: {
-    signUpUser: async (_, { userInput }, { dataSources }) => {
-      const accountInput = {
-        username: userInput.username,
-        lastChange: new Date().toISOString(),
-      };
-
-      await dataSources.accountAPI.createAccount(accountInput);
-
-      const authInput = {
-        username: userInput.username,
-
-        password: userInput.password,
-
-        name: userInput.name,
-
-        email: userInput.email,
-      };
-
-      return await dataSources.authAPI.createUser(authInput);
+    createUser: async (_, { user }, { dataSources }) => {
+      return await dataSources.authAPI.createUser(user);
     },
 
-    logIn: (_, { credentials }, { dataSources }) =>
-      dataSources.authAPI.authRequest(credentials),
+    deleteUser: async (_, {userId}, {dataSources, autenticado}) => {
+       if (autenticado == true) {
+         return await dataSources.authAPI.deleteUser(userId);
+       } else {
+         return null;
+       }
+    },
 
-    refreshToken: (_, { refresh }, { dataSources }) =>
-      dataSources.authAPI.refreshToken(refresh),
-  },
+    updateUser: async (_, {user}, {dataSources, autenticado}) => {
+      if (autenticado == true) {
+        return await dataSources.authAPI.UpdateUser(user);
+      } else {
+        return null;
+      }
+    },
+
+    logIn: async(_, { credentials }, { dataSources }) => {
+      return await dataSources.authAPI.logIn(credentials);
+    },
+
+    refreshToken: async(_, { token }, { dataSources }) => {
+      return await dataSources.authAPI.refreshToken(token);
+    }
+  }
 };
 
 module.exports = usersResolver;
