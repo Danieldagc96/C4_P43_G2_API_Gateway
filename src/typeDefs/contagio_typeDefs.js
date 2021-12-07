@@ -10,6 +10,7 @@ const contagioTypeDefs = gql`
     fechaRecuperacion: String
     fechaMuerte: String
   }
+
   input ContagioInput {
     idPersona: Int!
     fechaDiagnostico: String!
@@ -19,10 +20,22 @@ const contagioTypeDefs = gql`
     fechaRecuperacion: String
     fechaMuerte: String
   }
-  extend type Query {
-    contagioByIdPersona(idPersona: Int!): [Contagio]
+
+  input ContagioUpdate {
+    estadoEnfermedad: String!
+    ubicacionCaso: String!
+    estadoRecuperacion: String!
+    fechaRecuperacion: String
+    fechaMuerte: String
   }
+
+  extend type Query {
+    contagiosByIdPersona(idPersona: Int!): [Contagio]
+    
+  }
+
   extend type Mutation {
-    createContagio(contagio: ContagioInput!): Contagio
+    createContagio(contagio: ContagioInput!): Contagio!
+    updateContagio(contagio: ContagioUpdate!): Contagio!
   }
 `;

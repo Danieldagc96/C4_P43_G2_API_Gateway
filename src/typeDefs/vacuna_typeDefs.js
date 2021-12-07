@@ -16,7 +16,7 @@ const vacunaTypeDefs = gql`
     fechaAplicacion: String!
   }
   extend type Query {
-    vacunaByIdPersona(idPersona: Int!): [Vacuna]
+    vacunasByIdPersona(idPersona: Int!): [Vacuna]
   }
   extend type Mutation {
     createVacuna(vacuna: VacunaInput!): Vacuna
