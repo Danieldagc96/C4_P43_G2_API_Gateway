@@ -38,7 +38,7 @@ const afiliadoTypeDefs = gql`
 
   extend type Query {
     afiliadoByIdentificacion(identificacion: Int!): Afiliado
-    todosAfiliados(): [Afiliado] 
+    todosAfiliados: [Afiliado] 
   }
   extend type Mutation {
     createAfiliado(afiliado: AfiliadoInput): Afiliado

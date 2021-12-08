@@ -39,3 +39,5 @@ const contagioTypeDefs = gql`
     updateContagio(contagio: ContagioUpdate!): Contagio!
   }
 `;
+
+module.exports = contagioTypeDefs;

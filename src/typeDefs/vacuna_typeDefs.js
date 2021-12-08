@@ -22,3 +22,5 @@ const vacunaTypeDefs = gql`
     createVacuna(vacuna: VacunaInput!): Vacuna
   }
 `;
+
+module.exports = vacunaTypeDefs;
