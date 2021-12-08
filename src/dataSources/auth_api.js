@@ -25,7 +25,8 @@ class AuthAPI extends RESTDataSource {
   async updateUser(user){
     user = new Object(JSON.parse(JSON.stringify(user)));
     let userId = user.id;
-    return await this.put(`/update_user/${userId}/`, user);
+    let email = user.email;
+    return await this.put(`/update_user/${userId}/`, email);
   }
 
   async logIn(credentials) {

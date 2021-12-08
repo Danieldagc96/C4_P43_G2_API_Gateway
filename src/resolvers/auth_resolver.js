@@ -2,7 +2,7 @@ const usersResolver = {
   Query: {
     userDetailById: async (_, { userId }, { dataSources, autenticado }) => {
       if (autenticado == true) {
-        return await dataSources.acc
+        return await dataSources.authAPI.userDetailById(userId);
       } else {
         return null;
       }
