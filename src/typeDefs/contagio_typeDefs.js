@@ -22,6 +22,7 @@ const contagioTypeDefs = gql`
   }
 
   input ContagioUpdate {
+    idPersona: Int!
     estadoEnfermedad: String!
     ubicacionCaso: String!
     estadoRecuperacion: String!
@@ -31,7 +32,6 @@ const contagioTypeDefs = gql`
 
   extend type Query {
     contagiosByIdPersona(idPersona: Int!): [Contagio]
-    
   }
 
   extend type Mutation {

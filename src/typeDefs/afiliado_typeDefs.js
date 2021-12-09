@@ -13,6 +13,10 @@ const afiliadoTypeDefs = gql`
     direccion: String!
   }
 
+  type MensajeDelete {
+    Eliminado: Boolean
+  }
+
   input AfiliadoInput {
     identificacion: Int!
     nombres: String!
@@ -25,25 +29,20 @@ const afiliadoTypeDefs = gql`
     direccion: String!
   }
 
-  input AfiliadoUpdate{       
-    nombres: String!
-    apellidos: String!
-    edad: Int!
-    medidaEdad: String!
-    sexo: String!
+  input AfiliadoUpdate {
+    identificacion: Int!
     correo: String!
-    ciudad: String!
     direccion: String!
   }
 
   extend type Query {
     afiliadoByIdentificacion(identificacion: Int!): Afiliado
-    todosAfiliados: [Afiliado] 
+    todosAfiliados: [Afiliado]
   }
   extend type Mutation {
     createAfiliado(afiliado: AfiliadoInput): Afiliado
-    updateAfiliado(afiliado: AfiliadoUpdate): Afiliado 
-    deleteAfiliado(identificacion: Int!): String!
+    updateAfiliado(afiliado: AfiliadoUpdate): Afiliado
+    deleteAfiliado(identificacion: Int!): MensajeDelete
   }
 `;
 

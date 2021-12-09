@@ -19,7 +19,7 @@ const vacunaTypeDefs = gql`
     vacunasByIdPersona(idPersona: Int!): [Vacuna]
   }
   extend type Mutation {
-    createVacuna(vacuna: VacunaInput!): Vacuna
+    createVacuna(vacuna: VacunaInput!): Vacuna!
   }
 `;
 

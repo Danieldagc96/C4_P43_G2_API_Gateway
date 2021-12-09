@@ -10,47 +10,46 @@ class AfiliadoAPI extends RESTDataSource {
 
   async createAfiliado(afiliado) {
     afiliado = new Object(JSON.parse(JSON.stringify(afiliado)));
-    return await this.post('/crearAfiliado', afiliado);
+    return await this.post("/crearAfiliado", afiliado);
   }
 
-  async createContagio(contagio){
+  async createContagio(contagio) {
     contagio = new Object(JSON.parse(JSON.stringify(contagio)));
-    return await this.post('/crearContagio', contagio);
+    return await this.post("/crearContagio", contagio);
   }
 
-  async createVacuna(vacuna){
+  async createVacuna(vacuna) {
     vacuna = new Object(JSON.parse(JSON.stringify(vacuna)));
-    return await this.post('/crearVacuna', vacuna);
+    return await this.post("/crearVacuna", vacuna);
   }
 
-  async deleteAfiliado(identificacion){
+  async deleteAfiliado(identificacion) {
     return await this.delete(`/eliminarAfiliado/${identificacion}`);
   }
 
-  async updateAfiliado(afiliado){
+  async updateAfiliado(afiliado) {
     afiliado = new Object(JSON.parse(JSON.stringify(afiliado)));
-    return await this.put('/modificarAfiliado', afiliado);
+    return await this.put("/modificarAfiliado", afiliado);
   }
 
-  async updateContagio(contagio){
+  async updateContagio(contagio) {
     contagio = new Object(JSON.parse(JSON.stringify(contagio)));
-    return await this.put('/modificarContagio', contagio);
-
+    return await this.put("/modificarContagio", contagio);
   }
 
   async afiliadoByIdentificacion(identificacion) {
     return await this.get(`/mostrarAfiliado/${identificacion}`);
   }
 
-  async contagiosByIdPersona(idPersona){
+  async contagiosByIdPersona(idPersona) {
     return await this.get(`/mostrarContagiosAfiliado/${idPersona}`);
   }
 
-  async todosAfiliados(){
-    return await this.get('/mostrarTodosAfiliados');
+  async todosAfiliados() {
+    return await this.get("/mostrarTodosAfiliados");
   }
 
-  async vacunasByIdPersona(idPersona){
+  async vacunasByIdPersona(idPersona) {
     return await this.get(`/vacunasAfiliado/${idPersona}`);
   }
 }

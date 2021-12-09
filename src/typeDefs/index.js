@@ -5,7 +5,12 @@ const vacunaTypeDefs = require("./vacuna_typeDefs");
 const authTypeDefs = require("./auth_typeDefs");
 
 // Se unen
-const schemasArrays = [authTypeDefs, afiliadoTypeDefs, contagioTypeDefs, vacunaTypeDefs,];
+const schemasArrays = [
+  authTypeDefs,
+  afiliadoTypeDefs,
+  contagioTypeDefs,
+  vacunaTypeDefs,
+];
 
 //Se exportan
 
