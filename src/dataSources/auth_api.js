@@ -22,11 +22,10 @@ class AuthAPI extends RESTDataSource {
   }
 
   //revisar si está bien que llegue un objeto o tiene que ser un string
-  async updateUser(user){
-    user = new Object(JSON.parse(JSON.stringify(user)));
-    let userId = user.id;
-    let email = user.email;
-    return await this.put(`/update_user/${userId}/`, email);
+  async updateUser(email, userIdToken){
+    email = new Object(JSON.parse(JSON.stringify(email)));
+    
+    return await this.put(`/update_user/${userIdToken}/`, email);
   }
 
   async logIn(credentials) {

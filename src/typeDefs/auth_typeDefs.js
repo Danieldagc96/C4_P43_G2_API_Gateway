@@ -30,7 +30,6 @@ const authTypeDefs = gql`
   }
 
   input UserUpdateInput {
-    id: Int!
     email: String!
   }
 
@@ -38,14 +37,18 @@ const authTypeDefs = gql`
     refresh: String!
   }
 
+  type Email {
+    email: String
+  }
+
   type Query {
-    userDetailById(userId: Int!): UserDetail!
+    userDetailById: UserDetail!
   }
 
   type Mutation {
     createUser(user: SignUpInput!): Tokens!
-    deleteUser(userId: Int!): String!
-    updateUser(user: UserUpdateInput!): UserDetail 
+    deleteUser: String!
+    updateUser(email: UserUpdateInput!): Email 
     logIn(credentials: CredentialsInput!): Tokens!
     refreshToken(token: Refresh!): Access!
   }

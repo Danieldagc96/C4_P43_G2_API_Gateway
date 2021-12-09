@@ -1,8 +1,8 @@
 const usersResolver = {
   Query: {
-    userDetailById: async (_, { userId }, { dataSources, autenticado }) => {
-      if (autenticado == true) {
-        return await dataSources.authAPI.userDetailById(userId);
+    userDetailById: async (_, {}, { dataSources, userIdToken }) => {
+      if (isNaN(userIdToken) == false) {
+        return await dataSources.authAPI.userDetailById(userIdToken);
       } else {
         return null;
       }
@@ -14,17 +14,17 @@ const usersResolver = {
       return await dataSources.authAPI.createUser(user);
     },
 
-    deleteUser: async (_, {userId}, {dataSources, autenticado}) => {
-       if (autenticado == true) {
-         return await dataSources.authAPI.deleteUser(userId);
+    deleteUser: async (_, {}, {dataSources, userIdToken}) => {
+       if (isNaN(userIdToken) == false) {
+         return await dataSources.authAPI.deleteUser(userIdToken);
        } else {
          return null;
        }
     },
 
-    updateUser: async (_, {user}, {dataSources, autenticado}) => {
-      if (autenticado == true) {
-        return await dataSources.authAPI.UpdateUser(user);
+    updateUser: async (_, {email}, {dataSources, userIdToken}) => {
+      if (isNaN(userIdToken) == false) {
+        return await dataSources.authAPI.updateUser(email, userIdToken);
       } else {
         return null;
       }

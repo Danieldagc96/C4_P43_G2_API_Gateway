@@ -19,7 +19,7 @@ class AfiliadoAPI extends RESTDataSource {
   }
 
   async createVacuna(vacuna){
-    contagio = new Object(JSON.parse(JSON.stringify(vacuna)));
+    vacuna = new Object(JSON.parse(JSON.stringify(vacuna)));
     return await this.post('/crearVacuna', vacuna);
   }
 
