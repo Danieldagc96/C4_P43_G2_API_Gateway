@@ -1,7 +1,7 @@
 const vacunaResolver = {
     Query: {
-        vacunasByIdPersona: async (_, {idPersona}, {dataSources, autenticado}) => {
-            if (autenticado == true) {
+        vacunasByIdPersona: async (_, {idPersona}, {dataSources, userIdToken}) => {
+            if (isNaN(userIdToken) == false) {
                 return await dataSources.afiliadoAPI.vacunasByIdPersona(idPersona);
               } else {
                 return null;
@@ -9,8 +9,8 @@ const vacunaResolver = {
         }
     },
     Mutation: {
-        createVacuna: async (_, {vacuna}, {dataSources, autenticado}) => {
-            if (autenticado == true) {
+        createVacuna: async (_, {vacuna}, {dataSources, userIdToken}) => {
+            if (isNaN(userIdToken) == false) {
                 return await dataSources.afiliadoAPI.createVacuna(vacuna);
               } else {
                 return null;

@@ -6,7 +6,7 @@ const authentication = async ({ req }) => {
   const token = req.headers.authorization || "";
 
   if (token == ""){
-    return { autenticado: false };
+    return { userIdToken : null };
   } 
   else {
     try {
@@ -21,10 +21,10 @@ const authentication = async ({ req }) => {
 
       if (response.status != 200) {
         console.log(response);
-        throw new ApolloError(`SESION INACTIVA - ${401}` + response.status, 401);
+        throw new ApolloError(`Sesión fallida o inactiva - ${401}` + response.status, 401);
       }
 
-      return {autenticado: true};
+      return {userIdToken: (await response.json()).UserId};
     }
     catch (error) {
       throw new ApolloError(`TOKEN ERROR: ${500}: ${error}`, 500);
